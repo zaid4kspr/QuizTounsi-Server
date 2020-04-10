@@ -1,0 +1,239 @@
+/*
+	API v5.4
+	Quiz Online - WRTeam.in 
+	WRTeam Developers
+*/
+
+API URL -->> 
+	http://quiz.wrteam.in/api-v2.php  - (all APIs in one file only)
+
+API methods
+-------------------------
+1. get_categories()
+2. get_subcategory_by_maincategory()
+3. get_questions_by_subcategory()
+4. get_questions_by_category()
+5. report_question()
+6. get_privacy_policy_settings()
+7. user_signup()
+8. upload_profile_image()
+9. update_profile()
+10. get_monthly_leaderboard()
+11. get_random_questions()
+12. set_monthly_leaderboard()
+13. update_fcm_id()
+14. get_random_questions_for_computer()
+15. get_terms_conditions_settings()
+16. get_questions_by_level()
+17. get_monthly_users_score()
+18. get_user_by_id()
+19. get_datewise_leaderboard()
+20. get_global_leaderboard()
+21. get_system_configurations()
+22. get_languages()	
+23. get_categories_by_language()
+24. set_battle_statistics() 
+25. get_battle_statistics() 
+26. set_users_statistics()
+27. get_users_statistics()
+28. get_notifications() 
+29. get_about_us()
+
+------------------------------------------
+What parameters to be Passed?  See here >>
+------------------------------------------
+
+Use POST method to pass the parameters
+
+1. get_categories()
+	access_key:6808
+	get_categories:1
+	id:31 //{optional}
+
+2. get_subcategory_by_maincategory()
+	access_key:6808
+	get_subcategory_by_maincategory:1
+	main_id:31
+	
+3. get_questions_by_subcategory()
+	access_key:6808
+	get_questions_by_subcategory:1
+	subcategory:115
+
+4. get_questions_by_category()
+	access_key:6808
+	get_questions_by_category:1
+	category:15
+
+5. report_question()
+	access_key:6808
+	report_question:1
+	question_id:115
+	message: Any reporting message
+
+6. get_privacy_policy_settings()
+	access_key:6808
+	privacy_policy_settings:1
+
+7. user_signup()
+	access_key:6808
+	user_signup:1
+	name:Jaydeep Goswami
+	email:jaydeepjgiri@yahoo.com
+	profile:Image URL
+	mobile:7894561230
+	type: email / gmail / fb
+	fcm_id: xyz123654
+	refer_code:xyz123654
+	friends_code:xyz123654
+	ip_address: 191.1.0.4
+	status:1   // 1 - Active & 0 Deactive
+
+8. upload_profile_image()
+	access_key:6808
+	upload_profile_image:1
+	user_id:37
+	image: image file
+
+9. update_profile()
+	access_key:6808
+	update_profile:1
+	email:jaydeepjgiri@yahoo.com
+	name:Jaydeep Goswami
+	mobile:7894561230
+
+10. get_monthly_leaderboard()
+	access_key:6808
+	get_monthly_leaderboard:1
+	date:2019-02-01		// use date format = YYYY-MM-DD
+	limit:10            // {optional} - Number of records per page
+	offset:0            // {optional} - starting position
+	user_id:54 
+
+11. get_random_questions()
+	access_key:6808
+	get_random_questions:1
+	match_id:your_match_id
+	language_id:2   //{optional}
+	
+	user_id_1:1010
+	fcm_id_1:xyzCode
+	
+	user_id_2:1001
+	fcm_id_2:pqrsCode
+	
+	destroy_match:0 / 1     // 0 - don't destroy | 1 - destroy the battle
+
+12. set_monthly_leaderboard()
+	access_key:6808
+	set_monthly_leaderboard:1
+	user_id:10
+	score:100
+	
+13. update_fcm_id()
+	access_key:6808
+	update_fcm_id:1
+	user_id:1
+	fcm_id:xyzCode
+	refer_code:myReferCode { optional }
+	coins:100 { optional - Replacing coins not doing addition }
+
+14. get_random_questions_for_computer()
+	access_key:6808
+	get_random_questions_for_computer:1
+	language_id:2   //{optional}
+
+15. get_terms_conditions_settings()
+	access_key:6808
+	get_terms_conditions_settings:1
+
+16. get_questions_by_level()
+    access_key:6808
+	get_questions_by_level:1
+	level:2
+	category:50 {or}
+	subcategory:98 
+	language_id:2   // {optional} 
+	
+17. get_monthly_users_score()
+	access_key:6808
+	get_monthly_users_score:1
+	user_id:154			// for get current user rank (optional) (login user_id)
+	date:2019-02-01		// use date format = YYYY-MM-DD { optional }
+	
+18. get_user_by_id()
+	access_key:6808
+	get_user_by_id:1
+	id:31
+	
+19. get_datewise_leaderboard()
+	access_key:6808
+	get_datewise_leaderboard:1
+	from:2019-06-01		// use date format = YYYY-MM-DD
+	to:2019-06-07		// use date format = YYYY-MM-DD
+	user_id:25			// to get current user's rank (optional) ( login user_id )
+	
+20. get_global_leaderboard()
+	access_key:6808
+	get_global_leaderboard:1
+	limit:10            // {optional} - Number of records per page
+	offset:0            // {optional} - starting position
+	user_id:25		// to get current user's rank (optional) ( login user_id )
+	
+21. get_system_configurations()
+	access_key:6808
+	get_system_configurations:10
+
+22. get_languages()
+	access_key:6808
+	get_languages:1
+	id:1 // {optional}
+	
+23. get_categories_by_language()
+	access_key:6808
+	get_categories_by_language:1
+	language_id:1
+
+24. set_battle_statistics() 
+	access_key:6808
+	set_battle_statistics:1
+	user_id1:709 
+	user_id2:710
+	winner_id:710
+	is_drawn:0 / 1 (0->no_drawn,1->drawn)
+
+25. get_battle_statistics() 
+	access_key:6808
+	get_battle_statistics:1
+	user_id:12
+	sort:id / is_drawn / winner_id // {optional} 
+	order:DESC / ASC // {optional} 
+	offset:0    // {optional} - Starting position
+	limit:20    // {optional} - number of records per page
+
+26. set_users_statistics()
+	access_key:6808
+	set_users_statistics:1
+	user_id:10
+	questions_answered:100
+	correct_answers:10
+	category_id:1 //(id of category which user played) 
+	ratio:50 // (In percenatge)
+	coins:20 // {optional}
+
+27. get_users_statistics()
+	access_key:6808
+	get_users_statistics:1
+	user_id:31
+	
+28. get_notifications()
+	access_key:6808
+	get_notifications:1
+	sort:id / users / type // {optional} 
+	order:DESC / ASC // {optional} 
+	offset:0    // {optional} - Starting position
+	limit:20    // {optional} - number of records per page
+
+29. get_about_us()
+	access_key:6808
+	get_about_us:1
