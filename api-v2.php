@@ -101,7 +101,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_categories'])){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
 		$response['post'] = $_POST;
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['id'])){
@@ -119,7 +119,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_categories'])){
 			$response['error'] = "true";
 			$response['message'] = "No data found!";
 		}
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}else{
 		$sql = "SELECT *,(SELECT @no_of_subcategories := count(`id`) from subcategory s WHERE s.maincat_id = c.id and s.status = 1 ) as no_of, if(@no_of_subcategories = 0, (SELECT @maxlevel := MAX(`level`+0) from question q WHERE c.id = q.category ),@maxlevel := 0) as `maxlevel` FROM `category` c ORDER By CAST(c.row_order as unsigned) ASC";
 		$db->sql($sql);
@@ -138,7 +138,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_categories'])){
 			$response['message'] = "No data found!";
 		}
 
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -152,7 +152,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_subcategory_by_maincategory'
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['main_id'])){
@@ -172,7 +172,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_subcategory_by_maincategory'
 			$response['error'] = "true";
 			$response['message'] = "No data found!";
 		}
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -186,7 +186,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_questions_by_subcategory']))
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['subcategory'])){
@@ -210,7 +210,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_questions_by_subcategory']))
 			$response['error'] = "true";
 			$response['message'] = "No data found!";
 		}
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -224,7 +224,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_questions_by_category'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['category'])){
@@ -249,7 +249,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_questions_by_category'])){
 			$response['message'] = "No data found!";
 		}
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 //5. report_question() - report a question by user
@@ -263,7 +263,7 @@ if(isset($_POST['report_question']) && isset($_POST['access_key']) ){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -288,7 +288,7 @@ if(isset($_POST['report_question']) && isset($_POST['access_key']) ){
 		$response['error'] = true;
 		$response['message'] = "Please fill all the data and submit!";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 6. get_privacy_policy_settings()
@@ -300,7 +300,7 @@ if(isset($_POST['access_key']) && isset($_POST['privacy_policy_settings']) AND $
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -319,7 +319,7 @@ if(isset($_POST['access_key']) && isset($_POST['privacy_policy_settings']) AND $
 		$response['error'] = "true";
 		$response['message'] = "Please pass all the fields";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 7. user_signup()
@@ -341,7 +341,7 @@ if(isset($_POST['access_key']) && isset($_POST['user_signup'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -476,7 +476,7 @@ if(isset($_POST['access_key']) && isset($_POST['user_signup'])){
 			$response['message'] = "Please fill all the data and submit!";
 		}
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 8. upload_profile_image() - upload users profile pic
@@ -490,7 +490,7 @@ if(isset($_POST['access_key']) && isset($_POST['upload_profile_image'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -523,7 +523,7 @@ if(isset($_POST['access_key']) && isset($_POST['upload_profile_image'])){
 		if(!(in_array($extension, $allowedExts))){
 			$response['error']=true;
 			$response['message'] = 'Image type is invalid';
-			echo json_encode(utf8ize($response));
+			echo json_encode($response);
 			return false;
 		}
 		$filename = microtime(true).'.'. strtolower($extension);
@@ -559,7 +559,7 @@ if(isset($_POST['access_key']) && isset($_POST['upload_profile_image'])){
 	}
 	 
 	// Echo final json response to client
-	echo json_encode(utf8ize($response));
+	echo json_encode($response);
 }
 
 // 9. update_profile() - update user profile
@@ -574,7 +574,7 @@ if(isset($_POST['access_key']) && isset($_POST['update_profile'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -588,7 +588,7 @@ if(isset($_POST['access_key']) && isset($_POST['update_profile'])){
 	
 	$response['error'] = "false";
 	$response['message'] = "Profile updated successfully";
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 10. get_monthly_leaderboard()
@@ -604,14 +604,14 @@ if(isset($_POST['access_key']) && isset($_POST['get_monthly_leaderboard'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 
 	if(empty($_POST['date']) or !isset($_POST['date'])){
 		$response['error'] = "true";
 		$response['message'] = "Please fill all the data and submit!";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -681,11 +681,11 @@ if(isset($_POST['access_key']) && isset($_POST['get_monthly_leaderboard'])){
 		$response['error'] = "false";
 		$response['total'] = $total[0]['total'];
 		$response['data'] = $tempRow;
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}else{
 		$response['error'] = "true";
 		$response['message'] = "Data not found";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -705,7 +705,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -716,7 +716,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions'])){
 	    $db->sql($sql);
         $response['error'] = "false";
         $response['message'] = "Battle destroyed successfully";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
         return false;
         exit();
 	}
@@ -753,7 +753,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions'])){
     	if(empty($res)){
     		$response['error'] = "true";
     		$response['message'] = "No questions found to compete with each other!";
-    		print_r(json_encode(utf8ize($response)));
+    		print_r(json_encode($response));
     	}else{
     		$questions = $db->escapeString(json_encode($res));
     		$sql = "INSERT INTO `battle_questions` (`match_id`, `questions`) VALUES ('$match_id','$questions')";
@@ -779,7 +779,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions'])){
     // 		$result = send_message($fcm_id_2,$data);
     		$response['user_id2_status'] = ($result['success'] == 1)?'sent':'not sent';
     		
-    		print_r(json_encode(utf8ize($response)));
+    		print_r(json_encode($response));
     	}
 	}else{
 	    /* read the questions and send it. */
@@ -807,7 +807,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions'])){
 // 		$result = send_message($fcm_id_2,$data);
 		$response['user_id2_status'] = ($result['success'] == 1)?'sent':'not sent';
 		
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -822,7 +822,7 @@ if(isset($_POST['access_key']) && isset($_POST['set_monthly_leaderboard'])){
     if($access_key != $_POST['access_key']){
         $response['error'] = "true";
         $response['message'] = "Invalid Access Key";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
         return false;
     }
     
@@ -851,7 +851,7 @@ if(isset($_POST['access_key']) && isset($_POST['set_monthly_leaderboard'])){
         $response['error'] = "true";
         $response['message'] = "Please pass all the fields";
     }
-    print_r(json_encode(utf8ize($response)));
+    print_r(json_encode($response));
 }
 
 // 13. update_fcm_id() - update user FCM ID
@@ -867,7 +867,7 @@ if(isset($_POST['access_key']) && isset($_POST['update_fcm_id'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -884,7 +884,7 @@ if(isset($_POST['access_key']) && isset($_POST['update_fcm_id'])){
 	
 	$response['error'] = "false";
 	$response['message'] = " FCM updated successfully";
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 
@@ -898,7 +898,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions_for_compute
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -916,7 +916,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions_for_compute
 	if(empty($res)){
 		$response['error'] = "true";
 		$response['message'] = "No questions found to compete with each other!";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}else{
 	    $tempRow = array();
 		foreach($res as $row){
@@ -938,7 +938,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_random_questions_for_compute
 		$response['error'] = "false";
 		$response['message'] = "Data sent to devices via FCM 1";
 		$response['data'] = $newresult;
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -951,7 +951,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_terms_conditions_settings'])
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -970,7 +970,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_terms_conditions_settings'])
 		$response['error'] = "true";
 		$response['message'] = "Please pass all the fields";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 
@@ -990,7 +990,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_questions_by_level'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['level']) && (isset($_POST['category']) || isset($_POST['subcategory']))){
@@ -1024,7 +1024,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_questions_by_level'])){
 	    $response['error'] = "true";
 	    $response['message'] = "Pass all mandatory fields";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 17. get_monthly_users_score()
@@ -1039,7 +1039,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_monthly_users_score'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 
@@ -1063,16 +1063,16 @@ if(isset($_POST['access_key']) && isset($_POST['get_monthly_users_score'])){
 		if(!empty($my_rank)){
 			$response['error'] = "false";
     		$response['data'] = $my_rank[0];
-    		print_r(json_encode(utf8ize($response)));
+    		print_r(json_encode($response));
 		}else{
 		    $response['error'] = "true";
     		$response['message'] = "Data not found";
-    		print_r(json_encode(utf8ize($response)));
+    		print_r(json_encode($response));
 		}
 	}else{
 	    $response['error'] = "true";
 		$response['message'] = "Pass all the fields!";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -1086,7 +1086,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_user_by_id'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['id'])){
@@ -1122,11 +1122,11 @@ if(isset($_POST['access_key']) && isset($_POST['get_user_by_id'])){
 			$response['error'] = "true";
 			$response['message'] = "No data found!";
 		}
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}else{
 		$response['error'] = "true";
 		$response['message'] = "Please Pass all the fields!";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}
 }
 
@@ -1144,14 +1144,14 @@ if(isset($_POST['access_key']) && isset($_POST['get_datewise_leaderboard'])){
     if($access_key != $_POST['access_key']){
         $response['error'] = "true";
         $response['message'] = "Invalid Access Key";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
         return false;
     }
 
     if( (empty($_POST['from']) || !isset($_POST['from'])) or (empty($_POST['to']) || !isset($_POST['to']))){
         $response['error'] = "true";
         $response['message'] = "Please fill all the data and submit!";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
         return false;
     }
     
@@ -1227,11 +1227,11 @@ if(isset($_POST['access_key']) && isset($_POST['get_datewise_leaderboard'])){
         $response['error'] = "false";
         $response['total'] = $total[0]['total'];
         $response['data'] = $tempRow;
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
     }else{
         $response['error'] = "true";
         $response['message'] = "Data not found";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
     }
 }
 
@@ -1247,7 +1247,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_global_leaderboard'])){
     if($access_key != $_POST['access_key']){
         $response['error'] = "true";
         $response['message'] = "Invalid Access Key";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
         return false;
     }
     
@@ -1313,11 +1313,11 @@ if(isset($_POST['access_key']) && isset($_POST['get_global_leaderboard'])){
         $response['error'] = "false";
         $response['total'] = $total[0]['total'];
         $response['data'] = $tempRow;
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
     }else{
         $response['error'] = "true";
         $response['message'] = "Data not found";
-        print_r(json_encode(utf8ize($response)));
+        print_r(json_encode($response));
     }
 }
 
@@ -1330,7 +1330,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_system_configurations'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(!empty($config)){
@@ -1340,7 +1340,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_system_configurations'])){
 		$response['error'] = "true";
 		$response['message'] = "No configurations found yet!";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 22. get_languages()
@@ -1353,7 +1353,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_languages']) AND $_POST['get
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -1372,7 +1372,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_languages']) AND $_POST['get
 		$response['error'] = "true";
 		$response['message'] = "No data found!";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 23. get_categories_by_language() - get categories list by language id 
@@ -1385,7 +1385,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_categories_by_language'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['language_id']) && !empty($_POST['language_id'])){
@@ -1411,7 +1411,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_categories_by_language'])){
 		$response['error'] = "true";
 		$response['message'] = "No data found!";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 24. set_battle_statistics() 
@@ -1429,7 +1429,7 @@ if(isset($_POST['access_key']) && isset($_POST['set_battle_statistics'])){
 		if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 
@@ -1453,11 +1453,11 @@ if(isset($_POST['access_key']) && isset($_POST['set_battle_statistics'])){
 
 		$response['error'] = "false";
 			$response['message'] = " Insert successfully";
-			print_r(json_encode(utf8ize($response)));
+			print_r(json_encode($response));
 	}else{
 		$response['error'] = "true";
 		$response['message'] = "Please fill all the data and submit!";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 	}	
 }
 
@@ -1476,7 +1476,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_battle_statistics'])){
 		if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 
@@ -1540,7 +1540,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_battle_statistics'])){
 		}
 
 		}
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 }
 
 // 26. set_users_statistics()
@@ -1558,7 +1558,7 @@ if(isset($_POST['access_key']) && isset($_POST['set_users_statistics'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -1646,7 +1646,7 @@ if(isset($_POST['access_key']) && isset($_POST['set_users_statistics'])){
 		$response['error'] = "true";
 		$response['message'] = "Please pass all the fields";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 27. get_users_statistics()
@@ -1659,7 +1659,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_users_statistics'])){
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	if(isset($_POST['user_id'])){
@@ -1689,7 +1689,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_users_statistics'])){
 		$response['error'] = "true";
 		$response['message'] = "Please Pass all the fields!";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 28. get_notifications() 
@@ -1706,7 +1706,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_notifications'])){
 		if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 
@@ -1735,7 +1735,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_notifications'])){
 		$response['error'] = "true";
 		$response['message'] = "No notifications to read.";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 // 29. get_about_us()
@@ -1747,7 +1747,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_about_us']) AND $_POST['get_
 	if($access_key != $_POST['access_key']){
 		$response['error'] = "true";
 		$response['message'] = "Invalid Access Key";
-		print_r(json_encode(utf8ize($response)));
+		print_r(json_encode($response));
 		return false;
 	}
 	
@@ -1766,7 +1766,7 @@ if(isset($_POST['access_key']) && isset($_POST['get_about_us']) AND $_POST['get_
 		$response['error'] = "true";
 		$response['message'] = "Please pass all the fields";
 	}
-	print_r(json_encode(utf8ize($response)));
+	print_r(json_encode($response));
 }
 
 
