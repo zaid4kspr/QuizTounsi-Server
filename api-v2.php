@@ -583,6 +583,8 @@ if(isset($_POST['access_key']) && isset($_POST['update_profile'])){
 	
 	$sql = "UPDATE `users` SET `name`='".$name."'";
 	$sql .= (isset($_POST['mobile']) && !empty($_POST['mobile']))?" ,`mobile`='".$_POST['mobile']."'":"";
+	$sql .= (isset($_POST['level']) && !empty($_POST['level']))?" ,`level`=".$_POST['level']:"";
+	$sql .= (isset($_POST['exp']) && !empty($_POST['exp']))?" ,`exp`=".$_POST['exp']:"";
 	$sql .= " WHERE `email`='".$email."'";
 	$db->sql($sql);
 	
